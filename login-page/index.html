@@ -85,7 +85,12 @@
     // Yaha Trakt OAuth URL dalenge
     const clientId = "58b086eb5946d45c907b4cbcd34283e154aaa0266c8de53b7c52c1e61d267e87";  
     const redirectUri = "https://max-sync-test2.vercel.app/callback"; // baad me Vercel URL hoga
-    const traktAuthUrl = `https://trakt.tv/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=public`;
+    const traktAuthUrl = `https://trakt.tv/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_TRAKT_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_TRAKT_REDIRECT_URI}`;
+
+<a href={traktAuthUrl}>
+  <button>Login with Trakt</button>
+</a>
+
 
     // User ko Trakt login page par redirect karna
     window.location.href = traktAuthUrl;
@@ -94,4 +99,5 @@
 
 </body>
 </html>
+
 
