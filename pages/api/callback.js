@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         code,
-        client_id: process.env.TRAKT_CLIENT_ID,
+        client_id: process.env.NEXT_PUBLIC_TRAKT_CLIENT_ID,
         client_secret: process.env.TRAKT_CLIENT_SECRET,
         redirect_uri: process.env.TRAKT_REDIRECT_URI,
         grant_type: "authorization_code",
@@ -19,9 +19,14 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    console.log("Trakt Tokens:", data);
 
-    res.status(200).json(data);
+    if (data.access_token) {
+      // ✅ Success
+      res.status(200).json({ message: "Login success", tokens: data });
+    } else {
+      // ❌ Error from Trakt
+      res.status(400).json({ error: data });
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
