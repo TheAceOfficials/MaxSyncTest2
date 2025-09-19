@@ -4,7 +4,7 @@ import Head from "next/head";
 export default function Home() {
   const loginWithTrakt = () => {
     const clientId = process.env.NEXT_PUBLIC_TRAKT_CLIENT_ID;
-    const redirectUri = process.env.NEXT_PUBLIC_TRAKT_REDIRECT_URI || "http://localhost:3000/callback";
+    const redirectUri = process.env.NEXT_PUBLIC_TRAKT_REDIRECT_URI || "https://max-sync-test2.vercel.app/callback";
     const url = `https://trakt.tv/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=public`;
     window.location.href = url;
   };
@@ -65,3 +65,4 @@ export default function Home() {
     </>
   );
 }
+
