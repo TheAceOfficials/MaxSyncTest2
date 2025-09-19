@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       code,
-      client_id: process.env.NEXT_PUBLIC_TRAKT_CLIENT_ID,
+      client_id: process.env.TRAKT_CLIENT_ID,
       client_secret: process.env.TRAKT_CLIENT_SECRET, // 🔒 safe on server
       redirect_uri: process.env.NEXT_PUBLIC_TRAKT_REDIRECT_URI,
       grant_type: "authorization_code",
