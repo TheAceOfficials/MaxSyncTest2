@@ -1,8 +1,5 @@
-/* Hide scrollbars for carousels */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apne custom styles agar chahiye toh yaha add kar sakte ho */
