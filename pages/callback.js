@@ -13,13 +13,13 @@ export default function Callback() {
     if (error) {
       console.error("Auth error:", error);
       alert("Auth error: " + error);
-      router.push("/");
+      router.push("/home");
       return;
     }
 
     if (!code) {
       console.error("No code in callback");
-      router.push("/");
+      router.push("/home");
       return;
     }
 
@@ -35,20 +35,21 @@ export default function Callback() {
         if (!res.ok) {
           console.error("Token exchange failed", data);
           alert("Token exchange failed: " + (data.error || JSON.stringify(data)));
-          router.push("/");
+          router.push("/home");
           return;
         }
 
         // for demo: save tokens in localStorage (later move to DB/session)
         localStorage.setItem("trakt_tokens", JSON.stringify(data));
-        router.push("/");
+        router.push("/home");
       } catch (e) {
         console.error(e);
         alert("Unexpected error. Check terminal logs.");
-        router.push("/");
+        router.push("/home");
       }
     })();
   }, [router]);
 
   return <div style={{color:"#fff",height:"100vh",display:"flex",alignItems:"center",justifyContent:"center"}}>Logging you in...</div>;
 }
+
